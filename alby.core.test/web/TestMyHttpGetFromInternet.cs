@@ -265,7 +265,7 @@ namespace alby.core.web.test
 			Console.WriteLine( html.Substring( 0, 100 ) ) ;
 			Console.WriteLine( "################################################################################################################" ) ;
 
-			url = "http://club.japantimes.co.jp/jt" ;
+			url = "http://club.japantimes.co.jp/jt" ; // japanese
 			html = http.DownloadTextFile( url, out statusCode ) ;
 			html = Regex.Replace( html, @"\s", "" ) ;
 			html = Regex.Replace(html, theRegex, "");
