@@ -1,0 +1,14 @@
+" unicode", " alpha ", " bravo ", " charlie ", " delta      "
+"greek ", " bravo ", " charlie ", " delta", "  ??T??"
+
+"a ", "b  ", "c "
+
+"  a  "
+
+"a ","   "
+
+
+
+
+
+

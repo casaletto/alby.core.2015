@@ -1,0 +1,101 @@
+-------------------------------------------------------------
+csv parser
+
+alpha, bravo," charlie  ", delta," echo"
+
+List<string[]> lines
+
+for each line l in file
+                string[] fieldArray = new string[]
+
+                -- split line into , or "," fields
+               
+                inQuotedField = false
+                inNormalField = false
+                string field = ""
+
+                c = 0
+
+                -- if first field is quoted skip first char
+                GetFirstFieldStatus( c )
+                if inQuotedField then c++ ;
+                -------------------------
+               
+                ' use while c <= line.length
+                foreach char c in line
+
+                        ----------------------------------------------------
+                        if past end of line then
+                        begin
+                                if inNormalField or inQuotedField
+                                        add field to fieldArray
+                                break
+                        end
+                        ----------------------------------------------------
+                        if inNormalField
+                        begin
+                       
+                                if c == , then -- it's the end of a normal field
+                                        add field to fieldArray
+                                        field = ""
+
+                                        c++
+                                        GetNewFieldStatus( c, c+1)
+                                else
+                                        field += c
+                                        continue
+                                end
+                       
+                        end
+                        ----------------------------------------------------
+                        if inQuotedField -- quoted field
+                        begin
+                       
+                                if c == " then -- it's the end of a quoted field - expecting: ",               
+                                        add field to fieldArray
+                                        field = ""
+
+                                        c++ - skip to expected comma
+                                        GetNewFieldStatus( c, c+1 )    
+                                else                           
+                                        field += c
+                                        continue
+                                end
+
+                                continue
+                        end
+                       
+                ----------------------------------------------------
+                next c 
+       
+        lines.Add( fieldArray )
+next l 
+       
+==================================================================
+
+GetNewFieldStatus( c, c+1 )
+
+        inQuotedField = false
+        inNormalField = false
+
+        if c == , and c+1 == " then
+                inQuotedField = true
+
+        else
+        if c == , then
+                inNormalField = true
+
+==================================================================
+                       
+GetFirstFieldStatus( c )
+
+        inQuotedField = false
+        inNormalField = false
+
+        if c == " then
+                inQuotedField = true
+        else
+                inNormalField = true
+
+==================================================================
+
