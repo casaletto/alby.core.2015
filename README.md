@@ -1,5 +1,3 @@
 # alby.core.2015
-my core
 
-hello there
-my name is xxx
+alby's core stuff
